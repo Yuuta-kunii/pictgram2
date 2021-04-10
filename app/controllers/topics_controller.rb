@@ -1,4 +1,8 @@
 class TopicsController < ApplicationController
+  def index
+   @topic = Topic.all
+  end
+  
   def new
     @topic=Topic.new
   end
@@ -16,5 +20,11 @@ class TopicsController < ApplicationController
   private
   def topic_params
     params.require(:topic).permit(:image,:description)
+  end
+  
+  def login_check
+    unless user_logged_in?
+      redirect_to root_path,alter: "ログインしてください"
+    end
   end
 end

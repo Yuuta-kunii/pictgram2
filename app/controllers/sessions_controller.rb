@@ -1,8 +1,7 @@
-class SessionsController < ApplicationController
+ class SessionsController < ApplicationController
   def new
   end
-  
-  def create
+ def create
    user=User.find_by(email:params[:session][:email])
    if user && user.authenticate(params[:session][:password])
      log_in user
@@ -11,11 +10,11 @@ class SessionsController < ApplicationController
      flash.now[:danger]='ログインに失敗しました'
      render :new
    end
-  end
+ end
   
   def destroy
     log_out
-    redirect_to root_url,info:'ログアウトしました'
+    redirect_to root_path,info:'ログアウトしました'
   end
   
   private
@@ -31,4 +30,4 @@ class SessionsController < ApplicationController
   def user_params
    params.require(:user).permit(:name,:email,:password,:password_confirmation)
   end
-end
+ end
