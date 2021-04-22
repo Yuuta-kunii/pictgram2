@@ -9,6 +9,12 @@
    get   '/login',to:'sessions#new'
    post  '/login',to:'sessions#create'
    delete '/logout',to:'sessions#destroy'
+   
+   get '/favorites',to:'favorites#index'
+   post 'favorites',to: 'favorites#create'
+   
+   get topics/index
+   
   
    resources :users
    resources :topics

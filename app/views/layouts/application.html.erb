@@ -24,14 +24,14 @@
          
           <% if logged_in? %>
            <li>
-            <%=link_to favorites_index_path do%>
+            <%=link_to favorites_path do%>
              <%= image_tag"heart.png" %>
           <% end %>
            </li>
            
           <% if logged_in? %> 
            <li>
-            <%= link_to new_topic_path do %>
+            <%= link_to new_topics_path do %>
              <%= image_tag"camera.png" %>
             <% end %>
           <% end %>
@@ -44,7 +44,7 @@
            </li>
           <% else %>
            <li>
-            <%= link_to new_user_path do %>
+            <%= link_to users_new_path do %>
              <%= image_tag"register.png" %>
            <% end %>
            </li>

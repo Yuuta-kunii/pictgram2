@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   def index
-   @topic = Topic.all.includes(:favoirite_users)
+   @topics = Topic.all.includes(:favoirite_users)
   end
   
   def new
