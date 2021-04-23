@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+
+  
   def index
    @favorite_topics=current_user.favorite_topics
   end
@@ -9,9 +11,15 @@ class FavoritesController < ApplicationController
    favorite.topic_id=params[:topic_id]
    
    if favorite.save
-     redirect_to topic_path,success: 'お気に入りに登録しました'
+     redirect_to topics_path,success: 'お気に入りに登録しました'
    else
-     redirect_to topic_path,danger:'お気に入りに登録失敗しました'
+     redirect_to topics_path,danger:'お気に入りに登録失敗しました'
    end
+  end
+  
+  def destroy
+    user = current_user
+    favorite = Favorite.find_by(user_id: user.id, topic_id: params[:topic_id])
+    favorite.delete
   end
 end

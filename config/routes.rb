@@ -11,9 +11,9 @@
    delete '/logout',to:'sessions#destroy'
    
    get '/favorites',to:'favorites#index'
-   post 'favorites',to: 'favorites#create'
+   post '/favorites',to: 'favorites#create'
+   delete '/favorites',to: 'favorites#destroy'
    
-   get topics/index
    
   
    resources :users
