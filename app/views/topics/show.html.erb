@@ -1,0 +1,34 @@
+<div class="topic-index-wrapper">
+  <div class="container">
+    <h1 class="text-center">投稿詳細</h1>
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6">
+       <div class="topic-index-single">
+        <div class="topic-auhtor">
+        <h3 ><%= @topic.user.name %></h3>
+        </div>
+        <%= image_tag @topic.image.url %>
+        <div class="toic-description">
+        <P><%= @topic.description %></P>
+        </div>
+      <%= form_with(model:[@topic, @comment],class:"form-group") do |f| %>
+      <%= f.label :content,"コメント",class:"text-white" %>
+      <%= f.text_area :content,placeholder:"コメント",class:"form-control" %>
+      <%= f.submit "send",class:"btn btn-block btn-black" %>
+      <% end %>
+      <div class="conmment-box">
+       <h4>コメント一覧</h4>
+       <% @comments.each do |comment| %>  
+        <div class="content-auhtor">
+         <p><%= comment.user.name %></p>
+         </div>
+         <div class="content-description">
+          <p><%= comment.content %></p>
+         </div>
+         <% end %>  
+        </div> 
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>

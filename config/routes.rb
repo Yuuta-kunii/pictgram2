@@ -1,4 +1,5 @@
  Rails.application.routes.draw do
+  get 'comments/new'
    get 'topics/new'
    get 'sessions/new'
    get 'users/new'
@@ -17,6 +18,11 @@
    
   
    resources :users
-   resources :topics
+   
+   resources :topics 
+   
+   resources :topic do
+    resources :comments, only: :create
+   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
  end

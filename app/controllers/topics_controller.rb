@@ -17,6 +17,12 @@ class TopicsController < ApplicationController
    end
   end
   
+  def show
+    @topic=Topic.find(params[:id])
+    @comments=@topic.comments.order(created_at: :desc)
+    @comment=Comment.new
+  end
+  
   private
   def topic_params
     params.require(:topic).permit(:image,:description)

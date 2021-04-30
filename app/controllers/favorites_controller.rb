@@ -21,5 +21,6 @@ class FavoritesController < ApplicationController
     user = current_user
     favorite = Favorite.find_by(user_id: user.id, topic_id: params[:topic_id])
     favorite.delete
+     redirect_to topics_path,info:"お気に入りを解除しました"
   end
 end
